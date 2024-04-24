@@ -1,6 +1,6 @@
 # jplantuml4r
 
-[![R-CMD-check](https://github.com/io.github.terminological/jplantuml4r/workflows/R-CMD-check/badge.svg)](https://github.com/io.github.terminological/jplantuml4r/actions)
+[![R-CMD-check](https://github.com/terminological/jplantuml4r/workflows/R-CMD-check/badge.svg)](https://github.com/terminological/jplantuml4r/actions)
 
 
 `jplantuml4r` is based on a java library and must have a working version of `Java` and `rJava` installed prior to installation. The following commands can ensure that your `rJava` installation is working.
