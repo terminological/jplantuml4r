@@ -1,0 +1,100 @@
+---
+title: "jplantuml4r: Getting Started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{jplantuml4r: Getting Started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  upload.fun = knitr::image_uri
+)
+```
+
+This will become the getting started vignette on a `pkgdown` site.
+
+# Installation instructions
+
+`jplantuml4r` is based on a java library and must have a working version of `Java` and `rJava` installed prior to installation. The following commands can ensure that your `rJava` installation is working.
+
+```R
+install.packages("rJava")
+rJava::.jinit()
+rJava::J("java.lang.System")$getProperty("java.version")
+```
+To install `jplantuml4r` in R:
+
+```{r}
+library(devtools)
+
+# you can install from the local copy:
+load_all("~/Git/jplantuml4r")
+
+# or from your github repository:
+# install_github("io.github.terminological/jplantuml4r", args = c("--no-multiarch"))
+
+library(jplantuml4r)
+```
+# Usage
+
+Instructions for your users...
+
+__Hello world - R functional style (static methods)__
+
+```{r}
+
+example = "
+@startuml
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+  Object[] elementData
+  size()
+}
+
+enum TimeUnit {
+  DAYS
+  HOURS
+  MINUTES
+}
+
+annotation SuppressWarnings
+
+annotation Annotation {
+  annotation with members
+  String foo()
+  String bar()
+}
+
+@enduml
+"
+
+file = jplantuml4r::save_plant_uml(example, outFile = fs::path(tempdir(),"docs/articles/demo.png"), format="png")
+
+if (interactive() || identical(Sys.getenv("IN_PKGDOWN"), "true")) {
+  message("as we are running in pkgdown and rendering the site we copy the output files to the correct location to be picked up by the pkgdown site")
+  fs::file_copy(file, here::here("vignettes/demo.png"), overwrite = TRUE)
+  file = here::here("vignettes/demo.png")
+} 
+
+knitr::include_graphics(file)
+```
+
+```{r}
+jplantuml4r::supported_formats()
+```
