@@ -4,8 +4,8 @@
 ^\.Rproj\.user$
 ^_pkgdown\.yml$
 ^docs$
-^data-raw$
 ^pkgdown$
+^data-raw$
 ^cran-comments\.md$
 ^LICENSE\.md$
 
@@ -35,4 +35,3 @@ index.html
 # reconf.sh is created during rJava setup on github workflow to change java versions.
 # javasrc is what src gets renamed to on windows to prevent Rcmd.exe bug
 # this is specifically to prevent a spurious note NOTE on the github workflow.
-

@@ -16,7 +16,6 @@ LazyData: true
 VignetteBuilder: knitr
 Suggests: 
 	here,
-	devtools,
 	knitr,
 	rmarkdown,
 	testthat
