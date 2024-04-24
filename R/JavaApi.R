@@ -6,7 +6,7 @@
 #'
 #' Version: 0.0.0.9000
 #'
-#' Generated: 2024-04-24T15:09:41.059819688
+#' Generated: 2024-04-24T15:45:25.886719379
 #'
 #' Contact: rob.challen@bristol.ac.uk
 #' @import R6
@@ -82,7 +82,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised jplantuml4r");
 		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.0.0.9000");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2024-04-24T15:09:41.060119321");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2024-04-24T15:45:25.887315625");
 		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:jplantuml4r:main-SNAPSHOT");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rob.challen@bristol.ac.uk");
@@ -445,7 +445,7 @@ JavaApi$versionInformation = function() {
 	out = list(
 		package = "jplantuml4r",
 		r_package_version = "0.0.0.9000",
-		r_package_generated = "2024-04-24T15:09:41.075318006",
+		r_package_generated = "2024-04-24T15:45:25.907058798",
 		java_library_version = "io.github.terminological:jplantuml4r:main-SNAPSHOT",
 		maintainer = "rob.challen@bristol.ac.uk"
 	)

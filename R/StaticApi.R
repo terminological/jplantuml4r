@@ -3,7 +3,7 @@
 # and serves as an alternative R centric entry point of the jplantuml4r generated R library.
 
 # Version: 0.0.0.9000
-# Generated: 2024-04-24T15:09:41.077411688
+# Generated: 2024-04-24T15:45:25.910747325
 # Contact: rob.challen@bristol.ac.uk
 
 # PlantUML class static methods ----
