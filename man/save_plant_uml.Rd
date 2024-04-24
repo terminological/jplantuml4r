@@ -12,12 +12,12 @@
 \arguments{
 	\if{html}{\out{<div class="arguments">}}
 	\item{plantuml}{plantuml a plantuml file as a character vector. - (java expects a RCharacterVector)}
-	\item{outFile}{outFile the output filename - (defaulting to `tempfile()`) - (java expects a RCharacter)}
+	\item{outFile}{outFile the output filename - (defaulting to `tempfile()`) - (java expects a RFile)}
 	\item{format}{format see supported_formats method - (defaulting to `'png'`) - (java expects a RCharacter)}
 	\if{html}{\out{</div>}}
 }
 \value{
-RCharacter: this java method returns the message that the object was created with
+RFile: this java method returns the message that the object was created with
 
 }
 \description{

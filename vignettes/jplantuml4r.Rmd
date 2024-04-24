@@ -15,20 +15,21 @@ knitr::opts_chunk$set(
 )
 ```
 
-This will become the getting started vignette on a `pkgdown` site.
-
 # Installation instructions
 
-`jplantuml4r` is based on a java library and must have a working version of `Java` and `rJava` installed prior to installation. The following commands can ensure that your `rJava` installation is working.
+`jplantuml4r` is based on a java library and must have a working version of `Java`
+and `rJava` installed prior to installation. The following commands can ensure 
+that your `rJava` installation is working.
 
 ```R
 install.packages("rJava")
 rJava::.jinit()
 rJava::J("java.lang.System")$getProperty("java.version")
 ```
+
 To install `jplantuml4r` in R:
 
-```{r}
+```R
 library(devtools)
 
 # you can install from the local copy:
@@ -39,6 +40,7 @@ load_all("~/Git/jplantuml4r")
 
 library(jplantuml4r)
 ```
+
 # Usage
 
 Instructions for your users...

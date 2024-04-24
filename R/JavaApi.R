@@ -6,7 +6,7 @@
 #'
 #' Version: 0.0.0.9000
 #'
-#' Generated: 2024-04-24T11:54:40.554282221
+#' Generated: 2024-04-24T14:11:26.480094704
 #'
 #' Contact: rob.challen@bristol.ac.uk
 #' @import R6
@@ -82,7 +82,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 		}
 		.jcall(self$.log,returnSig = "V",method = "info","Initialised jplantuml4r");
 		.jcall(self$.log,returnSig = "V",method = "debug","R package version: 0.0.0.9000");
-		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2024-04-24T11:54:40.554547967");
+		.jcall(self$.log,returnSig = "V",method = "debug","R package generated: 2024-04-24T14:11:26.480878348");
 		.jcall(self$.log,returnSig = "V",method = "debug","Java library version: io.github.terminological:jplantuml4r:main-SNAPSHOT");
 		.jcall(self$.log,returnSig = "V",method = "debug",paste0("Java library compiled: ",buildDate));
 		.jcall(self$.log,returnSig = "V",method = "debug","Contact: rob.challen@bristol.ac.uk");
@@ -250,6 +250,13 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				if (is.null(rObj)) return(rJava::.new('uk/co/terminological/rjava/types/RUntypedNaVector'))
 				return(rJava::.jnew('uk/co/terminological/rjava/types/RUntypedNaVector',length(rObj)))
 			},
+			RFile=function(rObj) {
+				if (is.na(rObj)) return(rJava::.jnew('uk/co/terminological/rjava/types/RFile'))
+				if (length(rObj) > 1) stop('input too long')
+				if (!is.character(rObj)) stop('input must be a character representing a file path')
+				tmp = fs::path_abs(fs::path_expand(rObj),getwd())
+				return(rJava::.jnew('uk/co/terminological/rjava/types/RFile',tmp))
+			},
 			RUntypedNa=function(rObj) {
 				return(rJava::.jnew('uk/co/terminological/rjava/types/RUntypedNa'))
 			},
@@ -332,6 +339,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				return(dplyr::group_by(convDf(jObj),!!!sapply(groups,as.symbol)))
 			},
 			RUntypedNaVector=function(jObj) rep(NA, rJava::.jcall(jObj,returnSig='I',method='size')),
+			RFile=function(jObj) {	fs::path(rJava::.jcall(jObj,returnSig='Ljava/lang/String;',method='rPrimitive'))},
 			RUntypedNa=function(jObj) return(NA),
 			RFactorVector=function(jObj) ordered(
 				x = rJava::.jcall(jObj,returnSig='[I',method='rValues'),
@@ -363,12 +371,12 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 			savePlantUml = function(plantuml, outFile=tempfile(), format='png') {
 				# copy parameters
 				tmp_plantuml = self$.toJava$RCharacterVector(plantuml);
-				tmp_outFile = self$.toJava$RCharacter(outFile);
+				tmp_outFile = self$.toJava$RFile(outFile);
 				tmp_format = self$.toJava$RCharacter(format);
 				# execute static call
 				tmp_out = .jcall(
 					"io/github/io/github/terminological/PlantUML", 
-					returnSig = "Luk/co/terminological/rjava/types/RCharacter;", 
+					returnSig = "Luk/co/terminological/rjava/types/RFile;", 
 					method = "savePlantUml",
 					tmp_plantuml,
 					tmp_outFile,
@@ -378,7 +386,7 @@ JavaApi = R6::R6Class("JavaApi", public=list(
 				.jcheck()
 				# static methods cannot return themselves fluently, so this does not need to be checked for.
 				# convert java object back to R. Wrapping in an R6 class as needed
-				out = self$.fromJava$RCharacter(tmp_out);
+				out = self$.fromJava$RFile(tmp_out);
 				if(is.null(out)) return(invisible(out))
 				return(out)
 			},
@@ -437,7 +445,7 @@ JavaApi$versionInformation = function() {
 	out = list(
 		package = "jplantuml4r",
 		r_package_version = "0.0.0.9000",
-		r_package_generated = "2024-04-24T11:54:40.565547975",
+		r_package_generated = "2024-04-24T14:11:26.497863054",
 		java_library_version = "io.github.terminological:jplantuml4r:main-SNAPSHOT",
 		maintainer = "rob.challen@bristol.ac.uk"
 	)

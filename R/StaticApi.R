@@ -3,7 +3,7 @@
 # and serves as an alternative R centric entry point of the jplantuml4r generated R library.
 
 # Version: 0.0.0.9000
-# Generated: 2024-04-24T11:54:40.568009015
+# Generated: 2024-04-24T14:11:26.500475920
 # Contact: rob.challen@bristol.ac.uk
 
 # PlantUML class static methods ----
@@ -13,9 +13,9 @@
 #' 
 #' no description
 #' @param plantuml a plantuml file as a character vector. - (java expects a RCharacterVector)
-#' @param outFile the output filename - (defaulting to `tempfile()`) - (java expects a RCharacter)
+#' @param outFile the output filename - (defaulting to `tempfile()`) - (java expects a RFile)
 #' @param format see supported_formats method - (defaulting to `'png'`) - (java expects a RCharacter)
-#' @return RCharacter: 
+#' @return RFile: 
 #' this java method returns the message that the object was created with
 #' @export
 save_plant_uml = function(plantuml, outFile=tempfile(), format='png') {

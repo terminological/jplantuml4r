@@ -27,7 +27,7 @@ An R6 package wrapping java code in the org.github.io.github.terminological:jpla
 
 Version: 0.0.0.9000
 
-Generated: 2024-04-24T11:54:40.538740346
+Generated: 2024-04-24T14:11:26.461428183
 }
 
 \author{\email{rob.challen@bristol.ac.uk}}
@@ -352,14 +352,14 @@ jplantuml4r::save_plant_uml(plantuml, outFile, format)
 			\if{html}{\out{<div class="arguments">}}
 			\itemize{
 				\item{plantuml a plantuml file as a character vector.}{ - (java expects a RCharacterVector)}
-				\item{outFile the output filename - (defaulting to `tempfile()`)}{ - (java expects a RCharacter)}
+				\item{outFile the output filename - (defaulting to `tempfile()`)}{ - (java expects a RFile)}
 				\item{format see supported_formats method - (defaulting to `'png'`)}{ - (java expects a RCharacter)}
 			}
 			\if{html}{\out{</div>}}
 		}
 
 		\subsection{Returns}{
-			RCharacter: this java method returns the message that the object was created with
+			RFile: this java method returns the message that the object was created with
 		}
 	}
 

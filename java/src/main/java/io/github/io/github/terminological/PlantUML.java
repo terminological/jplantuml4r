@@ -21,11 +21,12 @@ import uk.co.terminological.rjava.RDefault;
 import uk.co.terminological.rjava.RMethod;
 import uk.co.terminological.rjava.types.RCharacter;
 import uk.co.terminological.rjava.types.RCharacterVector;
+import uk.co.terminological.rjava.types.RFile;
 
 /**
  * PlantUML can generate a variety of diagrams from a DSL
  */
-@RClass(suggests = {"devtools","here"})
+@RClass(suggests = {"here"})
 public class PlantUML {
 
 	static Logger log = LoggerFactory.getLogger(PlantUML.class);
@@ -39,14 +40,13 @@ public class PlantUML {
 	 * @throws IOException if the PNG cannot be written
 	 */
 	@RMethod
-	public static RCharacter savePlantUml(
+	public static RFile savePlantUml(
 			RCharacterVector plantuml, 
-			@RDefault(rCode="tempfile()") RCharacter outFile, 
+			@RDefault(rCode="tempfile()") RFile outFile, 
 			@RDefault(rCode = "'png'") RCharacter format
 			) throws IOException {
 		OptionFlags.getInstance().setOverwrite(true);
-		Files.createDirectories(Paths.get(outFile.get()).getParent());
-		OutputStream png = new FileOutputStream(outFile.get());
+		OutputStream png = outFile.getForWriting();
 		FileFormat ff = FileFormat.valueOf(format.get().toUpperCase());
 		SourceStringReader reader = new SourceStringReader(plantuml.get().collect(Collectors.joining("\n")));
 		// Write the first image to "png"
